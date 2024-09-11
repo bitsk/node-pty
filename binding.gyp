@@ -68,6 +68,21 @@
       ]
     }, { # OS!="win"
       'targets': [
+       {
+          'target_name': 'spawn-helper',
+          'type': 'executable',
+          'cflags': ['-Wall'],
+          'sources': [
+            'src/unix/spawn-helper.cc',
+          ],
+          'conditions': [
+            ['OS=="mac"', {
+              "xcode_settings": {
+                "MACOSX_DEPLOYMENT_TARGET":"10.7"
+              }
+            }]
+          ]
+        },
         {
           'target_name': 'pty',
           'sources': [
